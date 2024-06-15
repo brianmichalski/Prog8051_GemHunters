@@ -21,6 +21,7 @@ namespace GemHunters.Model
         public void Display()
         {
             AnsiConsole.Clear();
+            this.DisplayHeader();
 
             var table = new Table()
                 .Centered()
@@ -147,6 +148,18 @@ namespace GemHunters.Model
                     break;
             }
             return string.Format("[{0}]{1}[/]", color, label);
+        }
+
+        private void DisplayHeader()
+        {
+            var rule = new Rule("[bold blue]GEM HUNTERS[/] - v0.1   [grey](* Press Ctrl+C to Quit)[/]");
+            rule.Justification = Justify.Left;
+            rule.RuleStyle("red dim");
+
+            AnsiConsole.Clear();
+            AnsiConsole.Write(new Rule());
+            AnsiConsole.Write(rule);
+            AnsiConsole.Write(new Rule());
         }
     }
 }
