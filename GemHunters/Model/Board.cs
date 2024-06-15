@@ -62,7 +62,7 @@ namespace GemHunters.Model
             {
                 playerTest.Move(direction);
             }
-            catch (ArgumentException e)
+            catch (ArgumentException)
             {
                 return false;
             }
