@@ -130,7 +130,7 @@ namespace GemHunters.Model
 
         private string GetOccupantLabel(OccupantEnum occupant)
         {
-            string label = (occupant == OccupantEnum.N) ? " " : occupant.ToString();
+            string label = (occupant == OccupantEnum.N) ? "-" : occupant.ToString();
             string color = "";
             switch (occupant) {
                 case OccupantEnum.P1:
