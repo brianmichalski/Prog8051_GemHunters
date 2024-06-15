@@ -7,10 +7,14 @@ namespace GemHunters.Model
     public class Board
     {
         public Cell[,] Grid { get; }
+        
+        private int _AvailableGemsCount;
+        public int AvailableGemsCount { get => this._AvailableGemsCount; }
 
         public Board(int boardSize, Player player1, Player player2)
         { 
             this.Grid = new Cell[boardSize, boardSize];
+            this._AvailableGemsCount = 0;
             this.FillGrid(player1, player2);
         }
 
@@ -83,6 +87,7 @@ namespace GemHunters.Model
             if (OccupantEnum.G == cellOccupant)
             {
                 player.GemCount++;
+                this._AvailableGemsCount--;
             }
         }
 
@@ -99,7 +104,12 @@ namespace GemHunters.Model
                     {
                         continue;
                     }
-                    this.Grid[x, y] = new Cell(this.DefineRandomOccupant());
+                    OccupantEnum occupant = this.DefineRandomOccupant();
+                    this.Grid[x, y] = new Cell(occupant);
+                    if (occupant == OccupantEnum.G)
+                    {
+                        this._AvailableGemsCount++;
+                    }
                 }
             }
         }

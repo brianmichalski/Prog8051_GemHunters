@@ -27,7 +27,7 @@ public class Program
         do {
             Game.Board.Display();
             Player currentPlayer = Game.CurrentTurn;
-            Console.WriteLine("{0} turn. Gems: {1}. Move (use the arrows): ", currentPlayer.Name, currentPlayer.GemCount);
+            Console.WriteLine("{0}'s turn (Gems: {1}). Use the arrows to move: ", currentPlayer.Name, currentPlayer.GemCount);
 
             ConsoleKeyInfo keyInput = Console.ReadKey();
             char direction = ParseKeyToChar(keyInput.Key);
@@ -54,7 +54,23 @@ public class Program
                 Thread.Sleep(2000);
             }
             Game.SwitchTurn();
+            Game.TotalTurns++;
 
         } while (!Game.IsGameOver());
+
+
+        Game.Board.Display();
+        Console.WriteLine("GAME OVER! {0} movements performed.", Game.TotalTurns);
+        Player? winner = Game.AnnounceWinner();
+        if (winner != null)
+        {
+            Console.WriteLine("The winner is {0} with {1} gems collected!", winner.Name, winner.GemCount);
+        }
+        else
+        {
+            Console.WriteLine("TIE result! {0} gems each.", Game.Player1.GemCount);
+        }
+        Thread.Sleep(2000);
+
     }
 }
