@@ -14,16 +14,9 @@
             this.GemCount = 0;
         }
 
-        public void Move(char Direction)
+        public void Move(char direction)
         {
-            char[] validDirections = { 'U', 'D', 'L', 'R' };
-            if (Array.IndexOf(validDirections, Direction) < 0)
-            {
-                throw new ArgumentException(string.Format(
-                    "Invalid direction. Accepted values: {0}.",
-                    string.Join(", ", validDirections)));
-            }
-            switch (Direction)
+            switch (direction)
             {
                 case 'U':
                     this.Position.Y++;

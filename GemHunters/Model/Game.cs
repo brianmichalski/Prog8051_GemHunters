@@ -10,14 +10,15 @@
 
         public Player Player2 { get; set; }
 
-        public Player? CurrentTurn { get; set; }
+        public Player CurrentTurn { get; set; }
 
         public int TotalTurns { get; set; }
 
         public Game()
         {
-            this.Player1 = new Player("P1", new Position(0,0));
-            this.Player2 = new Player("P2", new Position(BOARDSIZE - 1, BOARDSIZE - 1));
+            this.Player1 = new Player("P1", new Position(0, BOARDSIZE - 1));
+            this.Player2 = new Player("P2", new Position(BOARDSIZE - 1, 0));
+            this.CurrentTurn = this.Player1;
             this.Board = new Board(BOARDSIZE, this.Player1, this.Player2);
         }
 
