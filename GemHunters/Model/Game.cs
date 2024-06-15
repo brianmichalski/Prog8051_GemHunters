@@ -41,7 +41,7 @@
 
         public bool IsGameOver()
         {
-            return this.TotalTurns > 30 || this.Board.AvailableGemsCount == 0;
+            return this.TotalTurns >= 30 || this.Board.AvailableGemsCount == 0;
         }
 
         public Player? AnnounceWinner()
